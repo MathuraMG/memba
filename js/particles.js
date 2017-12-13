@@ -1,10 +1,9 @@
 var clock;
 var deltaTime;
-function createParticleSystem() {
+function createParticleSystem(particleCount, xCenter, yCenter, zCenter, xSize, ySize, zSize) {
   clock = new THREE.Clock(true);
 
     // The number of particles in a particle system is not easily changed.
-    var particleCount = 5000;
 
     // Particles are just individual vertices in a geometry
     // Create the geometry that will hold all of the vertices
@@ -12,9 +11,9 @@ function createParticleSystem() {
 
     // Create the vertices and add them to the particles geometry
     for (var p = 0; p < particleCount; p++) {
-        var x = Math.random() * 400 - 200;
-        var y = Math.random() * 400 - 200;
-        var z = Math.random() * 400 - 200;
+        var x = Math.random() * xSize - xSize/2 + xCenter;
+        var y = Math.random() * ySize - ySize/2 + yCenter;
+        var z = Math.random() * zSize - zSize/2 + zCenter;
 
         // Create the vertex
         var particle = new THREE.Vector3(x, y, z);
@@ -33,30 +32,45 @@ function createParticleSystem() {
             });
 
     // Create the particle system
-    particleSystem = new THREE.Points(particles, particleMaterial);
+    var particleSystem = new THREE.Points(particles, particleMaterial);
 
-    return particleSystem;
+    return {
+      system: particleSystem,
+      xCenter: xCenter,
+      yCenter: yCenter,
+      zCenter: zCenter,
+      xSize: xSize,
+      ySize: ySize,
+      zSize: zSize,
+    };
 }
 
-function animateParticles(particleSystem, size) {
-  particleSystem.material.size = size;
-  deltaTime = clock.getDelta();
-    var verts = particleSystem.geometry.vertices;
+function animateParticles(particleSystem, size, deltaTime) {
+  let system = particleSystem.system;
+  let xCenter = particleSystem.xCenter;
+  let yCenter = particleSystem.yCenter;
+  let zCenter = particleSystem.zCenter;
+  let xSize = particleSystem.xSize;
+  let ySize = particleSystem.ySize;
+  let zSize = particleSystem.zSize;
+
+  system.material.size = size;
+    var verts = system.geometry.vertices;
     for(var i = 0; i < verts.length; i++) {
         var vert = verts[i];
-        if (vert.y < -200) {
-            vert.y = Math.random() ;//* 400 - 200;
+        if (vert.y < yCenter-ySize/2) {
+            vert.y = Math.random() + yCenter + ySize/2;
         }
-        if (vert.x < -200) {
-            vert.x = Math.random() ;//* 400 - 200;
+        if (vert.x < xCenter-xSize/2) {
+            vert.x = Math.random() + xCenter + xSize/2;
         }
-        if (vert.z < -200) {
-            vert.z = Math.random() ;//* 400 - 200;
+        if (vert.z < zCenter-zSize/2) {
+            vert.z = Math.random() + zCenter + zSize/2;
         }
         vert.y = vert.y - (10 * deltaTime);
         vert.z = vert.z - (10 * deltaTime);
         vert.x = vert.x - (10 * deltaTime);
     }
-    particleSystem.geometry.verticesNeedUpdate = true;
+    system.geometry.verticesNeedUpdate = true;
 
 }

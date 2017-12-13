@@ -6,6 +6,7 @@ function initMusic() {
 		"loop" : true
   }).connect(meter).toMaster();
   Tone.Buffer.on('load', function(){
+    player.volume.value = -25;
   	player.start();
   })
 }
