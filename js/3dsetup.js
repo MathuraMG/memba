@@ -37,7 +37,7 @@ function init() {	//create the scene
 	// load a resource
 	loader.load(
 		// resource URL
-		'/assets/3d/memba.obj',
+		'assets/3d/memba.obj',
 		// called when resource is loaded
 		function ( object ) {
 	    // object.scale.x = 0.01;

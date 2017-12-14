@@ -26,7 +26,7 @@ function createParticleSystem(particleCount, xCenter, yCenter, zCenter, xSize, y
     var particleMaterial = new THREE.PointsMaterial(
             {color: 0xffffff,
              size: 5,
-             map: THREE.ImageUtils.loadTexture("/assets/images/blob.png"),
+             map: THREE.ImageUtils.loadTexture("assets/images/blob.png"),
              blending: THREE.AdditiveBlending,
              transparent: true,
             });
