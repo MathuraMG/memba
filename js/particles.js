@@ -55,22 +55,22 @@ function animateParticles(particleSystem, size, deltaTime) {
   let zSize = particleSystem.zSize;
 
   system.material.size = size;
-    var verts = system.geometry.vertices;
-    for(var i = 0; i < verts.length; i++) {
-        var vert = verts[i];
-        if (vert.y < yCenter-ySize/2) {
-            vert.y = Math.random() + yCenter + ySize/2;
-        }
-        if (vert.x < xCenter-xSize/2) {
-            vert.x = Math.random() + xCenter + xSize/2;
-        }
-        if (vert.z < zCenter-zSize/2) {
-            vert.z = Math.random() + zCenter + zSize/2;
-        }
-        vert.y = vert.y - (10 * deltaTime);
-        vert.z = vert.z - (10 * deltaTime);
-        vert.x = vert.x - (10 * deltaTime);
-    }
-    system.geometry.verticesNeedUpdate = true;
+    // var verts = system.geometry.vertices;
+    // for(var i = 0; i < verts.length; i++) {
+    //     var vert = verts[i];
+    //     if (vert.y < yCenter-ySize/2) {
+    //         vert.y = Math.random() + yCenter + ySize/2;
+    //     }
+    //     if (vert.x < xCenter-xSize/2) {
+    //         vert.x = Math.random() + xCenter + xSize/2;
+    //     }
+    //     if (vert.z < zCenter-zSize/2) {
+    //         vert.z = Math.random() + zCenter + zSize/2;
+    //     }
+    //     vert.y = vert.y - (10 * deltaTime);
+    //     vert.z = vert.z - (10 * deltaTime);
+    //     vert.x = vert.x - (10 * deltaTime);
+    // }
+    // system.geometry.verticesNeedUpdate = true;
 
 }

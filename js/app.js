@@ -3,6 +3,8 @@ $( document ).ready(function() {
 	initMusic();
 	animate();
 });
+window.addEventListener( 'resize', onWindowResize, false );
+
 var deltaTime;
 deltaTime = clock.getDelta();
 
@@ -20,11 +22,16 @@ function animate() {
 	animateParticles(particleSystem_small2,level*2, deltaTime);
 	animateParticles(particleSystem_small3,level*2, deltaTime);
 	animateParticles(particleSystem_small4,level*2, deltaTime);
-
-
-  // cube.rotation.x += 0.1;
-  // cube.rotation.y += 0.1;
-
   renderer.render(scene, camera);
 
 };
+
+
+function onWindowResize(){
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
