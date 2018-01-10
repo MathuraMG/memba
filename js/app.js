@@ -4,7 +4,6 @@ $( document ).ready(function() {
 	animate();
 });
 var deltaTime;
-deltaTime = clock.getDelta();
 
 function animate() {
   requestAnimationFrame( animate );
