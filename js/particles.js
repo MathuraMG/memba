@@ -45,7 +45,7 @@ function createParticleSystem(particleCount, xCenter, yCenter, zCenter, xSize, y
     };
 }
 
-function animateParticles(particleSystem, size, deltaTime) {
+function animateParticles(particleSystem, size) {
   let system = particleSystem.system;
   let xCenter = particleSystem.xCenter;
   let yCenter = particleSystem.yCenter;
@@ -67,10 +67,9 @@ function animateParticles(particleSystem, size, deltaTime) {
         if (vert.z < zCenter-zSize/2) {
             vert.z = Math.random() + zCenter + zSize/2;
         }
-        vert.y = vert.y - (10 * deltaTime);
-        vert.z = vert.z - (10 * deltaTime);
-        vert.x = vert.x - (10 * deltaTime);
+        vert.y = vert.y - .05;
+        vert.z = vert.z - .05;
+        vert.x = vert.x - .05;
     }
     system.geometry.verticesNeedUpdate = true;
-
 }
