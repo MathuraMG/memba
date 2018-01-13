@@ -53,17 +53,6 @@ canvas {
   opacity: .5;
 }
 
-.nav__link:hover {
-  text-decoration: none;
-  webkit-animation: neon 1.5s ease-in-out infinite alternate;
-  -moz-animation: neon 1.5s ease-in-out infinite alternate;
-  animation: neon 1.5s ease-in-out infinite alternate;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  transition: all 0.5s;
-  color: #ffffff;
-}
-
 .sound{
   display: block;
   position: absolute;
@@ -75,7 +64,7 @@ canvas {
   border: none;
 }
 
-.sound--on {
+.sound--on, nav__link:hover {
   text-decoration: none;
   webkit-animation: neon 1.5s ease-in-out infinite alternate;
   -moz-animation: neon 1.5s ease-in-out infinite alternate;
