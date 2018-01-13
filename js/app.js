@@ -2,6 +2,8 @@ $( document ).ready(function() {
 	init();
 	initMusic();
 	animate();
+	$('.iphone__notification').hide();
+	checkIphone();
 });
 window.addEventListener( 'resize', onWindowResize, false );
 var level = 0;
@@ -41,4 +43,27 @@ function toggleSound() {
 	$('.sound').toggleClass('sound--on');
 	var temp =-100-player.volume.value;
 	player.volume.value = temp
+}
+
+function checkIphone(){
+    var ua = navigator.userAgent;
+    var checker = {
+      iphone: ua.match(/(iPhone|iPod|iPad)/)
+    };
+    if (checker.iphone){
+			$('.iphone__notification').show();
+      $('.sound').toggleClass('sound--on');
+			player.volume.value = -100;
+
+    }
+    else {
+
+    }
+}
+
+function enableIphoneSound() {
+	player.start();
+	$('.iphone__notification').hide();
+	player.volume.value = 0;
+	$('.sound').toggleClass('sound--on');
 }
