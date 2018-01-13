@@ -75,6 +75,20 @@ canvas {
   color: #ffffff;
 }
 
+.notification {
+  background: none;
+  border: none;
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: 'Iceland', cursive;
+  color: #fff;
+  cursor: pointer;
+}
+
 @-webkit-keyframes neon {
   from {
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #888, 0 0 70px #888, 0 0 80px #888, 0 0 100px #888, 0 0 150px #888;
