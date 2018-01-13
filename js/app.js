@@ -4,11 +4,15 @@ $( document ).ready(function() {
 	animate();
 });
 window.addEventListener( 'resize', onWindowResize, false );
-
+var level = 0;
 function animate() {
   requestAnimationFrame( animate );
-	var level = meter.getLevel();
-	level = Tone.dbToGain(level);
+	if(player.volume.value <= -100) {
+		level = 0.9*level + 0.1*(2*Math.random());
+	} else {
+		level = meter.getLevel();
+		level = Tone.dbToGain(level);
+	}
 	deltaTime = clock.getDelta();
 	animateParticles(particleSystem_main,level*2);
 	animateParticles(particleSystem_side1,level*2);
@@ -31,4 +35,10 @@ function onWindowResize(){
 
     renderer.setSize( window.innerWidth, window.innerHeight );
 
+}
+
+function toggleSound() {
+	$('.sound').toggleClass('sound--on');
+	var temp =-100-player.volume.value;
+	player.volume.value = temp
 }
