@@ -64,7 +64,7 @@ canvas {
   border: none;
 }
 
-.sound--on, nav__link:hover {
+.sound--on, .nav__link:hover {
   text-decoration: none;
   webkit-animation: neon 1.5s ease-in-out infinite alternate;
   -moz-animation: neon 1.5s ease-in-out infinite alternate;
