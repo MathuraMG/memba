@@ -7,6 +7,11 @@ canvas {
   width: 100%; height: 100%
 }
 
+@font-face {
+  font-family: Vonique64;
+  src: url(/assets/fonts/Vonique64.ttf);
+}
+
 .nav {
   width: 100%;
   position: absolute;
@@ -33,7 +38,7 @@ canvas {
 .nav__link {
   text-decoration: none;
   color: #444;
-  font-family: 'Iceland', cursive;
+  font-family: Vonique64;
   font-size: 2rem;
 }
 
@@ -64,7 +69,7 @@ canvas {
   border: none;
 }
 
-.sound--on, nav__link:hover {
+.sound--on, .nav__link:hover {
   text-decoration: none;
   webkit-animation: neon 1.5s ease-in-out infinite alternate;
   -moz-animation: neon 1.5s ease-in-out infinite alternate;
@@ -73,6 +78,20 @@ canvas {
   -moz-transition: all 0.5s;
   transition: all 0.5s;
   color: #ffffff;
+}
+
+.notification {
+  background: none;
+  border: none;
+  display: block;
+  position: absolute;
+  bottom: 5rem;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8rem;
+  font-family: Vonique64;
+  color: #fff;
+  cursor: pointer;
 }
 
 @-webkit-keyframes neon {
