@@ -1,5 +1,81 @@
 var scene, camera, renderer, geometru, light1, light2, light3,loader;
-var particleSystem_main, particleSystem_side1, particleSystem_side2, particleSystem_side3, particleSystem_side4, particleSystem_small1, particleSystem_small2, particleSystem_small3, particleSystem_small4;
+var particleSystem;
+
+var particleSystems = [
+	{
+		id: 'main',
+		no: 5000,
+		x_pos: 0,
+		y_pos: 0,
+		z_pos: 0,
+		len: 300
+	},
+	{
+		id: 'side1',
+		no: 500,
+		x_pos: 220,
+		y_pos: 270,
+		z_pos: 200,
+		len: 100
+	},
+	{
+		id: 'side2',
+		no: 500,
+		x_pos: -250,
+		y_pos: -120,
+		z_pos: 200,
+		len: 90
+	},
+	{
+		id: 'side3',
+		no: 500,
+		x_pos: -200,
+		y_pos: 170,
+		z_pos: 200,
+		len: 150
+	},
+	{
+		id: 'side4',
+		no: 500,
+		x_pos: 250,
+		y_pos: -200,
+		z_pos: 100,
+		len: 150
+	}
+	,
+	{
+		id: 'small1',
+		no: 50,
+		x_pos: -250,
+		y_pos: -70,
+		z_pos: 50,
+		len: 50
+	},
+	{
+		id: 'small2',
+		no: 50,
+		x_pos: 250,
+		y_pos: -160,
+		z_pos: 100,
+		len: 70
+	},
+	{
+		id: 'small3',
+		no: 50,
+		x_pos: 0,
+		y_pos: 300,
+		z_pos: 100,
+		len: 30
+	},
+	{
+		id: 'small4',
+		no: 160,
+		x_pos: 250,
+		y_pos: 0,
+		z_pos: 150,
+		len: 60
+	}
+];
 
 function init() {	//create the scene
 	scene = new THREE.Scene();
@@ -15,12 +91,6 @@ function init() {	//create the scene
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( renderer.domElement );
 
-	//create the cube
-	geometry = new THREE.BoxGeometry( 1, 1, 1 );
-	// material = new THREE.MeshPhongMaterial({color: 0x696969, emissive: 0x696969, specular:0x696969, shininess: 15, side: THREE.DoubleSide})
-	 // = new THREE.MeshBasicMaterial( { color: 0xe42f12 } );
-	// cube = new THREE.Mesh( geometry, material );
-
 	//create the lighting elements
 	light1 = new THREE.PointLight( 0xffffff, 1, 1500 );
 	light1.position.set( 500, 500, 500 );
@@ -31,55 +101,26 @@ function init() {	//create the scene
 	light3 = new THREE.PointLight( 0xffffff, 1, 1500 );
 	light3.position.set( 500, -500, 500 );
 
-	//instantiate loader
-	loader = new THREE.OBJLoader();
-  
 	scene.add( light1 );
 	scene.add( light2 );
 	scene.add( light3 );
-	// add it to the scene
+
+
 	//add controls
 	controls = new THREE.OrbitControls( camera, renderer.domElement );
 	controls.maxDistance = 500;
-	particleSystem_main = createParticleSystem(5000,0,0,0,300,300,300);
-	addMask(loader, 0,0,0);
-	scene.add(particleSystem_main.system);
 
-	particleSystem_side1 = createParticleSystem(500,220,270,200,100,100,100);
-	addMask(loader, 220,270,200);
-	scene.add(particleSystem_side1.system);
+	//instantiate loader
+	loader = new THREE.OBJLoader();
 
-	particleSystem_side2 = createParticleSystem(500,-250,-120,200,90,90,90);
-	addMask(loader, -250,-120,200);
-	scene.add(particleSystem_side2.system);
-
-	particleSystem_side3 = createParticleSystem(500,-200,170,200,150,150,150);
-	addMask(loader, -200,170,200);
-	scene.add(particleSystem_side3.system);
-
-	particleSystem_side4 = createParticleSystem(500,250,-200,100,150,150,150);
-	addMask(loader, 250,-200,100);
-	scene.add(particleSystem_side4.system);
-
-	particleSystem_small1 = createParticleSystem(50,-250,-70,50,50,50,50);
-	addMask(loader, -250,-70,50);
-	scene.add(particleSystem_small1.system);
-
-	particleSystem_small2 = createParticleSystem(50,250,-160,100,70,70,70);
-	addMask(loader, 250,-160,100);
-	scene.add(particleSystem_small2.system);
-
-	particleSystem_small3 = createParticleSystem(50,0,300,100,30,30,30);
-	addMask(loader, 0,300,100);
-	scene.add(particleSystem_small3.system);
-
-	particleSystem_small4 = createParticleSystem(160,250,0,150,60,60,60);
-	addMask(loader,250,0,150);
-	scene.add(particleSystem_small4.system);
+	//add particles
+	particleSystems.forEach(function(ps) {
+		particleSystem = createParticleSystem(ps.no, ps.x_pos, ps.y_pos, ps.z_pos, ps.len, ps.len, ps.len);
+		addMask(loader,ps.x_pos, ps.y_pos, ps.z_pos);
+		ps.system = particleSystem;
+		scene.add(particleSystem.system);
+	})
 }
-//basic animation function
-
-
 
 function addMask(loader, x, y, z) {
 	loader.load(
@@ -101,12 +142,3 @@ function addMask(loader, x, y, z) {
 	  }
 	);
 }
-
-
-
-//instantiate loader
-
-
-// load a resource
-
-

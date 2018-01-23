@@ -1,13 +1,8 @@
-var clock;
-var deltaTime;
+
 function createParticleSystem(particleCount, xCenter, yCenter, zCenter, xSize, ySize, zSize) {
-  clock = new THREE.Clock(true);
 
-    // The number of particles in a particle system is not easily changed.
-
-    // Particles are just individual vertices in a geometry
-    // Create the geometry that will hold all of the vertices
     var particles = new THREE.Geometry();
+
 
     // Create the vertices and add them to the particles geometry
     for (var p = 0; p < particleCount; p++) {
@@ -24,8 +19,9 @@ function createParticleSystem(particleCount, xCenter, yCenter, zCenter, xSize, y
 
     // Create the material that will be used to render each vertex of the geometry
     var particleMaterial = new THREE.PointsMaterial(
-            {color: 0xffffff,
+            {
              size: 5,
+             alphaTest: 0.5,
              map: THREE.ImageUtils.loadTexture("assets/images/blob.png"),
              blending: THREE.AdditiveBlending,
              transparent: true,
