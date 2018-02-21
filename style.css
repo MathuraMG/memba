@@ -29,7 +29,7 @@ canvas {
 }
 
 .nav__left {
-  width: 70%;
+  width: 60%;
   float: left;
 }
 .nav__list {
@@ -65,8 +65,9 @@ canvas {
   }
   .nav {
     flex-direction: column;
+    /* bottom: -1rem; */
   }
-  .nav__left, .nav__right {
+  .nav__left, .nav__right, .nav__center {
     width: 100%;
     justify-content: space-around;
     padding: 0.4rem;
@@ -112,13 +113,49 @@ canvas {
   border: none;
   display: block;
   position: absolute;
-  bottom: 5rem;
+  bottom: 7rem;
   width: 100%;
   text-align: center;
   font-size: 0.8rem;
   font-family: Vonique64;
   color: #fff;
   cursor: pointer;
+}
+
+.nav__center {
+  /* background: #000; */
+
+}
+
+#gform {
+  color: #aaa;
+  font-family: Vonique64;
+}
+
+.contact__form {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.contact__form-input {
+  z-index: 10;
+  font-family: Vonique64;
+  background: #000;
+  border: 1px solid #444;
+  border-radius: 30px 0 0 30px;
+  padding: 0.5rem;
+  color: #aaa;
+}
+
+.contact__form-button {
+  font-family: Vonique64;
+  background: #444;
+  border: 1px solid #444;
+  border-radius: 0 30px 30px 0;
+  padding: 0.5rem;
 }
 
 @-webkit-keyframes neon {
