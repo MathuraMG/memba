@@ -16,6 +16,8 @@
 		<script src="js/libraries/OBJLoader.js"></script>
 		<script src="js/libraries/tone.min.js"></script>
 		<script src="js/libraries/CanvasRenderer.js"></script>
+		<script src="js/libraries/jquery-serialize.js"></script>
+		<script src="js/subscribe.js"></script>
 		<script src="js/3dsetup.js"></script>
 		<script src="js/music.js"></script>
 		<script src="js/app.js"></script>
@@ -25,6 +27,7 @@
 		<button class="sound sound--on" onClick="toggleSound()">
 			<i class="fa fa-volume-up" aria-hidden="true"></i>
 		</button>
+
 		<div class="nav">
 			<nav class="nav__left">
 				<ul class="nav__list">
@@ -38,10 +41,16 @@
 							Contact
 						</a>
 					</li>
-
-					</li>
 				</ul>
 			</nav>
+
+			<div class="nav__center contact">
+				<form class="contact__form" name="gform" id="gform" enctype="text/plain" action="https://docs.google.com/forms/d/e/1FAIpQLScToHKiPnQHW3JPUyNJs_68emn6q87abMkh3ozmVT5HnDaPeA/formResponse?" target="hidden_iframe" onsubmit="submitted=true;">
+					<input class="contact__form-input" type="text" name="entry.1264885708" id="entry.1264885708" placeholder="Email"><br>
+					<input class="contact__form-button" type="submit" value="Subscribe">
+				</form>
+			</div>
+			
 			<nav class="nav__right">
 				<ul class="nav__list">
 					<li class= "nav__item">
@@ -77,6 +86,8 @@
 				</ul>
 			</nav>
 		</div>
+
+
 	</body>
 
 </html>
