@@ -33,13 +33,13 @@ function onWindowResize(){
 
 function toggleSound() {
 	$('.sound').toggleClass('sound--on');
-	var temp =-100-player.volume.value;
+	let temp =-100-player.volume.value;
 	player.volume.value = temp
 }
 
 function checkIphone(){
-    var ua = navigator.userAgent;
-    var checker = {
+    let ua = navigator.userAgent;
+    let checker = {
       iphone: ua.match(/(iPhone|iPod|iPad)/)
     };
     if (checker.iphone){
