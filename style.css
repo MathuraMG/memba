@@ -52,6 +52,19 @@ canvas {
   color: #888;
   font-family: Vonique64;
   font-size: 2rem;
+  display: flex;
+}
+
+.nav__sub-link {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #888;
+  font-family: Vonique64;
+  font-size: 0.5rem;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding-left: 0.2rem;
 }
 
 .nav__item {
@@ -65,6 +78,10 @@ canvas {
   .nav__link {
     font-size: 1.2rem;
   }
+  .nav__sub-link {
+    font-size: 7px;
+  }
+  
   .nav {
     flex-direction: column;
     /* bottom: -1rem; */
